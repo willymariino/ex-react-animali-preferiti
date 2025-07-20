@@ -49,11 +49,10 @@ Obiettivo: L’utente può aggiungere animali specifici utilizzando la modale. -
 
     <script type="text/babel">
 
-        function ReactApp() {
+        function ReactComponent() {
 
             return (
-                <details className="lista-animali">
-
+                <details>
                     <summary>Animali</summary>
 
                     <div>
@@ -66,14 +65,16 @@ Obiettivo: L’utente può aggiungere animali specifici utilizzando la modale. -
                         </ul>
 
                     </div>
-
-
                 </details>
-
             )
-
         }
 
+        const { createRoot } = ReactDOM
+
+        const listaAnimali = document.querySelector(".lista-animali")
+
+        const root = createRoot(listaAnimali)
+        root.render(<ReactComponent />)
 
     </script>
 
