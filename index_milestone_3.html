@@ -21,42 +21,9 @@
 
         const { useState } = React
 
-
-        const animalsChoices = ["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]
-
-
-        function ReactComponent() {
-
-            // quando uso react da cdn + babel, tutti gli useState vanno dentro al componente
-            const [animals, setAnimals] = useState(["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]) // aggiungo l'array animasChoices come stato iniziale
-
-
-            function aggiungiAnimale() {
-                const casualAnimal = animalsChoices[Math.floor(Math.random() * animalsChoices.length)]
-                setAnimals([...animals, casualAnimal])
-            }
-
-            return (
-                <>
-                    <button onClick={aggiungiAnimale}>aggiungi animale</button>
-                    <details>
-                        <summary>Animali</summary>
-
-                        <div>
-
-                            <ul>
-                                {animals.map((animal, index) => <li key={index}> {animal}</li>)}
-                            </ul>
-
-                        </div>
-                    </details>
-                </>
-            )
-        }
-
         function Modal({
-            title,
-            content,
+            title = "qui verrà mostrato il titolo",
+            content = "contenuto della modale",
             show = false,
             onClose = () => { }
         }) {
@@ -71,6 +38,40 @@
                 document.body
             )
         }
+
+
+        const animalsChoices = ["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]
+
+
+        function ReactComponent() {
+
+            const [show, setShow] = useState(false)
+            // quando uso react da cdn + babel, tutti gli useState vanno dentro al componente
+            const [animals, setAnimals] = useState(["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]) // aggiungo l'array animasChoices come stato iniziale
+
+
+            function aggiungiAnimale() {
+                const casualAnimal = animalsChoices[Math.floor(Math.random() * animalsChoices.length)]
+                setAnimals([...animals, casualAnimal])
+            }
+
+            return (
+                <>
+                    <button onClick={() => setShow(true)}>aggiungi animale</button>
+
+                    <Modal
+
+                        title="animali da aggiungere"
+                        content="contenuto modale"
+                        show={show}
+                        onClose={() => setShow(false)}
+
+                    />
+
+                </>
+            )
+        }
+
 
 
         const { createRoot } = ReactDOM
