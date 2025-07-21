@@ -31,7 +31,10 @@
             inviaForm
 
         }) {
-            return show && ReactDOM.createPortal( // questo portal reindirizza la modale nel body, sotto il footer, altrimenti andrebbe sopra
+
+            // al posto di mettere visibile uguale a false, per rendere false l'opzione di default, qui potevo mettere: if (!visible) return null
+
+            return visibile && ReactDOM.createPortal( // questo portal reindirizza la modale nel body, sotto il footer, altrimenti andrebbe sopra
 
 
                 <div className="modal-container">
