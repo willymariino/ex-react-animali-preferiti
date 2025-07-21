@@ -27,7 +27,8 @@
             show = false,
             onClose = () => { },
             newAnimal,
-            setNewAnimal
+            setNewAnimal,
+            onSubmit
 
         }) {
             return show && ReactDOM.createPortal( // questo portal reindirizza la modale nel body, sotto il footer, altrimenti andrebbe sopra
@@ -47,8 +48,11 @@
                             value={newAnimal}
                             onChange={e => setNewAnimal(e.target.value)}
                         />
-                        <button>invia</button>
+
+                        <button onClick={onSubmit}>invia</button>
+
                         <button onClick={onClose}>Annulla</button>
+
                     </div>
                 </div>,
                 document.body // secondo argomento di react portal, elemento html di destinazione in cui verrà reindirizzata la modale
@@ -62,6 +66,7 @@
         function ReactComponent() {
 
             const [show, setShow] = useState(false)
+
             // quando uso react da cdn + babel, tutti gli useState vanno dentro al componente
             const [animals, setAnimals] = useState(["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]) // aggiungo l'array animasChoices come stato iniziale
 
@@ -87,7 +92,7 @@
                             onClose={() => setShow(false)}
                             newAnimal={newAnimal}
                             setNewAnimal={setNewAnimal}
-
+                            onSubmit={aggiungiAnimale}
                         />
 
                     </form>
