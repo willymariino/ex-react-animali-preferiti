@@ -39,6 +39,12 @@
 
                             ))}
                         </ul>
+                        <input type="text"
+                            placeholder="aggiungi un animale"
+                            value={newAnimal}
+                            onChange={e => setNewAnimal(e.target.value)}
+                        />
+                        <button>invia</button>
                         <button onClick={onClose}>Annulla</button>
                     </div>
                 </div>,
@@ -56,24 +62,30 @@
             // quando uso react da cdn + babel, tutti gli useState vanno dentro al componente
             const [animals, setAnimals] = useState(["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]) // aggiungo l'array animasChoices come stato iniziale
 
+            const [newAnimal, setNewAnimal] = useState("")
 
-            function aggiungiAnimale() {
-                const casualAnimal = animalsChoices[Math.floor(Math.random() * animalsChoices.length)]
-                setAnimals([...animals, casualAnimal])
+            function aggiungiAnimale(e) {
+                e.preventDefault()
+                setAnimals([...animals, NewAnimal])
+                setNewAnimal("")
             }
 
             return (
                 <>
-                    <button onClick={() => setShow(true)}>aggiungi animale</button>
 
-                    <Modal
+                    <form onSubmit={aggiungiAnimale}>
+                        <button onClick={() => setShow(true)}>mostra la modale</button>
 
-                        title="animali"
-                        content={animals}
-                        show={show}
-                        onClose={() => setShow(false)}
+                        <Modal
 
-                    />
+                            title="animali"
+                            content={animals}
+                            show={show}
+                            onClose={() => setShow(false)}
+
+                        />
+
+                    </form>
 
                 </>
             )
