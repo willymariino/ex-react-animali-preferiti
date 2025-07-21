@@ -49,26 +49,30 @@ Obiettivo: L’utente può aggiungere animali specifici utilizzando la modale. -
 
     <script type="text/babel">
 
+        const { useState } = React
+
+
         const animalsChoices = ["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]
         const [animals, setAnimals] = useState([])
 
-        const { useState } = React
 
         function ReactComponent() {
 
-            const casualAnimal = animalsChoices[math.floor(Math.random() * animalsChoices.lenght)]
-            setAnimals([...animals, casualAnimal])
+            function aggiungiAnimale() {
+                const casualAnimal = animalsChoices[math.floor(Math.random() * animalsChoices.length)]
+                setAnimals([...animals, casualAnimal])
+            }
 
             return (
                 <>
-                    <button onClick={casualAnimal}>aggiungi animale</button>
+                    <button onClick={aggiungiAnimale}>aggiungi animale</button>
                     <details>
                         <summary>Animali</summary>
 
                         <div>
 
                             <ul>
-                                {animalsChoices.map(animal => <li key={animal}> {animal}</li>)}
+                                {animals.map(animal => <li key={animal}> {animal}</li>)}
                             </ul>
 
                         </div>
