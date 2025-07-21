@@ -24,11 +24,11 @@
         function Modal({
             title = "qui verrà mostrato il titolo",
             content = "contenuto della modale",
-            show = false,
-            onClose = () => { },
-            newAnimal,
-            setNewAnimal,
-            onSubmit
+            visibile = false,
+            chiudiModale = () => { },
+            testoInput,
+            aggiornaTesto,
+            inviaForm
 
         }) {
             return show && ReactDOM.createPortal( // questo portal reindirizza la modale nel body, sotto il footer, altrimenti andrebbe sopra
@@ -46,17 +46,17 @@
                             ))}
                         </ul>
 
-                        <form onSubmit={onSubmit}>
+                        <form onSubmit={inviaForm}>
                             <input type="text"
                                 placeholder="aggiungi un animale"
-                                value={newAnimal}
-                                onChange={e => setNewAnimal(e.target.value)}
+                                value={testoInput}
+                                onChange={e => aggiornaTesto(e.target.value)}
                             />
 
                             <button type="submit">invia</button>
                         </form>
 
-                        <button onClick={onClose}>Annulla</button>
+                        <button onClick={chiudiModale}>Annulla</button> {/* qui chiudiModale è il nome che ho dato alla prop al posto di onClose   */}
 
                     </div>
                 </div>,
@@ -94,13 +94,15 @@
 
                         title="animali"
                         content={animals}
-                        show={show}
-                        onClose={() => setShow(false)}
-                        newAnimal={newAnimal}
-                        setNewAnimal={setNewAnimal}
-                        onSubmit={aggiungiAnimale}
+                        visibile={show}
+                        chiudiModale={() => setShow(false)}
+                        testoInput={newAnimal}
+                        aggiornaTesto={setNewAnimal}
+                        inviaForm={aggiungiAnimale}
                     />
 
+                    {/* qui con  chiudiModale={() => setShow(false)} 
+                         è lo stesso che dire onClose={() => setShow(false)} */}
 
 
                 </>
