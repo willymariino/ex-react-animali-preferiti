@@ -32,6 +32,8 @@
 
         }) {
             return show && ReactDOM.createPortal( // questo portal reindirizza la modale nel body, sotto il footer, altrimenti andrebbe sopra
+
+
                 <div className="modal-container">
                     <div className="modal">
                         <h2>{title}</h2>
@@ -43,18 +45,22 @@
 
                             ))}
                         </ul>
-                        <input type="text"
-                            placeholder="aggiungi un animale"
-                            value={newAnimal}
-                            onChange={e => setNewAnimal(e.target.value)}
-                        />
 
-                        <button onClick={onSubmit}>invia</button>
+                        <form onSubmit={aggiungiAnimale}>
+                            <input type="text"
+                                placeholder="aggiungi un animale"
+                                value={newAnimal}
+                                onChange={e => setNewAnimal(e.target.value)}
+                            />
+
+                            <button type="submit">invia</button>
+                        </form>
 
                         <button onClick={onClose}>Annulla</button>
 
                     </div>
                 </div>,
+                </form >,
                 document.body // secondo argomento di react portal, elemento html di destinazione in cui verrà reindirizzata la modale
             )
         }
@@ -81,21 +87,21 @@
             return (
                 <>
 
-                    <form onSubmit={aggiungiAnimale}>
-                        <button onClick={() => setShow(true)}>mostra la modale</button>
 
-                        <Modal
+                    <button onClick={() => setShow(true)}>mostra la modale</button>
 
-                            title="animali"
-                            content={animals}
-                            show={show}
-                            onClose={() => setShow(false)}
-                            newAnimal={newAnimal}
-                            setNewAnimal={setNewAnimal}
-                            onSubmit={aggiungiAnimale}
-                        />
+                    <Modal
 
-                    </form>
+                        title="animali"
+                        content={animals}
+                        show={show}
+                        onClose={() => setShow(false)}
+                        newAnimal={newAnimal}
+                        setNewAnimal={setNewAnimal}
+                        onSubmit={aggiungiAnimale}
+                    />
+
+
 
                 </>
             )
