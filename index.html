@@ -61,7 +61,7 @@ Obiettivo: L’utente può aggiungere animali specifici utilizzando la modale. -
 
 
             function aggiungiAnimale() {
-                const casualAnimal = animalsChoices[math.floor(Math.random() * animalsChoices.length)]
+                const casualAnimal = animalsChoices[Math.floor(Math.random() * animalsChoices.length)]
                 setAnimals([...animals, casualAnimal])
             }
 
@@ -74,7 +74,7 @@ Obiettivo: L’utente può aggiungere animali specifici utilizzando la modale. -
                         <div>
 
                             <ul>
-                                {animals.map(animal => <li key={animal}> {animal}</li>)}
+                                {animals.map((animal, index) => <li key={index}> {animal}</li>)}
                             </ul>
 
                         </div>
