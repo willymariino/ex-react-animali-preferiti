@@ -25,7 +25,10 @@
             title = "qui verrà mostrato il titolo",
             content = "contenuto della modale",
             show = false,
-            onClose = () => { }
+            onClose = () => { },
+            newAnimal,
+            setNewAnimal
+
         }) {
             return show && ReactDOM.createPortal(
                 <div className="modal-container">
@@ -82,6 +85,8 @@
                             content={animals}
                             show={show}
                             onClose={() => setShow(false)}
+                            newAnimal={newAnimal}
+                            setNewAnimal={setNewAnimal}
 
                         />
 
