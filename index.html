@@ -49,6 +49,8 @@ Obiettivo: L’utente può aggiungere animali specifici utilizzando la modale. -
 
     <script type="text/babel">
 
+        const animalsChoices = ["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]
+
         function ReactComponent() {
 
             return (
@@ -58,10 +60,7 @@ Obiettivo: L’utente può aggiungere animali specifici utilizzando la modale. -
                     <div>
 
                         <ul>
-                            <li>cane</li>
-                            <li>gatto</li>
-                            <li>topo</li>
-
+                            {animalsChoices.map(animal => <li key={animal}> {animal}</li>)}
                         </ul>
 
                     </div>
