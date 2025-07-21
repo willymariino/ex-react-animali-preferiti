@@ -50,8 +50,15 @@ Obiettivo: L’utente può aggiungere animali specifici utilizzando la modale. -
     <script type="text/babel">
 
         const animalsChoices = ["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]
+        const [animals, setAnimals] = useState([])
+
+        const { useState } = React
 
         function ReactComponent() {
+
+            const [newAnimal, setNewAnimal] = useState([])
+
+
 
             return (
                 <details>
