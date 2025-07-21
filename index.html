@@ -53,10 +53,12 @@ Obiettivo: L’utente può aggiungere animali specifici utilizzando la modale. -
 
 
         const animalsChoices = ["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]
-        const [animals, setAnimals] = useState([])
 
 
         function ReactComponent() {
+
+            const [animals, setAnimals] = useState([]) // quando uso react da cdn + babel, tutti gli useState vanno dentro al componente
+
 
             function aggiungiAnimale() {
                 const casualAnimal = animalsChoices[math.floor(Math.random() * animalsChoices.length)]
