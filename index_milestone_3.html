@@ -31,7 +31,14 @@
                 <div className="modal-container">
                     <div className="modal">
                         <h2>{title}</h2>
-                        <p>{content}</p>
+                        <ul>
+                            {content.map((animal, index) => ( // devo usare .map altrimenti quando passo un array, jsx lo converte in stringa facendo .toString()
+                                <li key={index} >
+                                    {animal}
+                                </li>
+
+                            ))}
+                        </ul>
                         <button onClick={onClose}>Annulla</button>
                     </div>
                 </div>,
@@ -61,8 +68,8 @@
 
                     <Modal
 
-                        title="animali da aggiungere"
-                        content="contenuto modale"
+                        title="animali"
+                        content={animals}
                         show={show}
                         onClose={() => setShow(false)}
 
