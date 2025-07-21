@@ -15,6 +15,25 @@ Usa un array predefinito per scegliere casualmente: -->
 
 <!-- 📌 Milestone 3: Usare una Modale per Aggiungere Animali
 Partendo da questo componente Modal:
+
+function Modal({
+      title, 
+      content, 
+      show = false, 
+      onClose = () => {}
+  }){
+      return show && ReactDOM.createPortal(
+          <div className="modal-container">
+              <div className="modal">
+                  <h2>{title}</h2>
+                  <p>{content}</p>
+                  <button onClick={onClose}>Annulla</button>
+              </div>
+          </div>,
+          document.body
+      )
+  }
+
 Espandilo affinché:
 
 La vecchia prop content può essere usata per passare un componente qualsiasi.
@@ -57,8 +76,8 @@ Obiettivo: L’utente può aggiungere animali specifici utilizzando la modale. -
 
         function ReactComponent() {
 
-            // aggiungo l'array animasChoices come stato iniziale
-            const [animals, setAnimals] = useState(["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]) // quando uso react da cdn + babel, tutti gli useState vanno dentro al componente
+            // quando uso react da cdn + babel, tutti gli useState vanno dentro al componente
+            const [animals, setAnimals] = useState(["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"]) // aggiungo l'array animasChoices come stato iniziale
 
 
             function aggiungiAnimale() {
